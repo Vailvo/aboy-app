@@ -1,0 +1,75 @@
+
+.Homepage {
+    padding: 60px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    width: 100%;
+    margin: auto;
+    max-width: 1450px;
+
+    .column {
+        float: left;
+        width: 22.55%;
+        padding: 5px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        
+        .hardware,
+        .plumbing,
+        .paint,
+        .lumber {
+            border-radius: 15px;
+           
+        }
+    
+    }
+
+    .row::after{
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+   h1 {
+       font-family: 'Courier New', Courier, monospace;
+   }
+    h1:hover {
+        color: green;
+        cursor: pointer;
+    }
+
+    
+    .services {
+        margin: auto;
+        padding: 10px;
+        
+        width: 925px;
+        vertical-align: middle;
+        
+        // .title {
+        //     float: left;
+        // }
+
+        .title {
+            // border: 2px solid red;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .clmn {
+            display: inline-block;
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 5px;
+            margin-left: 15px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .clmn:hover {
+            color: green;
+            background-color:black;
+            cursor: pointer;
+        }
+    }
+}

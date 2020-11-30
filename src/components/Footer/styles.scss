@@ -1,0 +1,46 @@
+.footer {
+    text-transform: uppercase;
+    text-align: center;
+    max-width: 1450px;
+    padding: 20px 10px;
+    margin: .5rem auto 0;
+
+    .address {
+        font-size: 16px;
+        font-family: 'Courier New', Courier, monospace;
+        float: left;
+        // background-color: rgb(231, 243, 240);
+
+        .column {
+            display: inline-block;
+            // border: 2px dashed red;
+            margin-left: 15px;
+            padding: 15px;
+        }
+    }
+
+    .storeHours,
+    .contactUs {
+        float: right;
+        margin-left: 10px;
+        padding: 10px;
+        font-size: 16px;
+        font-family: 'Courier New', Courier, monospace;
+
+        .sub {
+            font-size: 15px;
+        }
+    }
+
+
+    .contactUs {
+        margin-left: 300px;
+    }
+
+    .aboy {
+        display: block;
+        background-color: rgb(161, 95, 95);
+        font-family: 'Courier New', Courier, monospace;
+        padding: 25px;
+    }
+}
