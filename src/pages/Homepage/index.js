@@ -4,6 +4,7 @@ import Hardware from './../../images/hardware.jpg';
 import Plumbing from './../../images/plumbing.jpg';
 import Lumber from './../../images/lumber.png';
 import Paint from './../../images/paint.jpg';
+// import SlideShow from './../components/SlideShow';
 
 const Homepage = props => {
     return (
@@ -29,29 +30,41 @@ const Homepage = props => {
                 </div>
             </div>
 
+            <hr/>
+            
+            <div className="showRoom">
+                <h1>
+                    Showroom
+                </h1>
 
-            <div className=" services">
+                
+            </div>
+            
+            <hr/>
+        <div className=" services">
                 <h2 className="title">
                     Services
-                </h2  >
+                </h2>
                 <div className="clmn">
                     Key Cutting
-               </div>
+                </div>
                 <div className="clmn">
                     Paint Recycling
-               </div>
+                </div>
                 <div className="clmn">
                     Chain & Wire Cutting
-               </div>
+                </div>
                 <div className="clmn">
                     Pipe Cutting
-               </div>
-               <div className="clmn">
-                Load-Outs
-               </div>
+                </div>
+                <div className="clmn">
+                    Load-Outs
+                </div>
+            </div>  
 
-            </div>
         </div>
+                            
+                        
 
     );
 };

@@ -1,19 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { signUpUser } from './../../redux/User/user.actions';
+
 import './styles.scss'
 import FormInput from '../forms/FormInput';
 import Button from '../forms/Button';
-import { auth, handleUserProfile } from '../../firebase/utils'
+
 import AuthWrapper from '../AuthWrapper';
 
 
+const mapState = ({ user }) => ({
+    signUpSuccess: user.signUpSuccess,
+    signUpError: user.signUpError
+})
 const Signup = props => {
+    const { signUpSuccess, signUpError } = useSelector(mapState);
+    const dispatch = useDispatch();
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
+    useEffect(() => {
+        if (signUpSuccess) {
+            reset();
+            props.history.push('/');
+        }
+    }, [signUpSuccess]);
+
+    useEffect(() => {
+        if (Array.isArray(signUpError) && signUpError.length > 0) {
+            setErrors(signUpError)
+        }
+    })
     const reset = () => {
         setDisplayName('');
         setEmail('');
@@ -26,25 +48,13 @@ const Signup = props => {
 
   const handleFormSubmit = async event => {
         event.preventDefault();
+        dispatch(signUpUser({
+            displayName,
+            email,
+            password,
+            confirmPassword
+        }))
        
-        if (password  < 8) {
-            const err = ['Password should be at least 8 characters long']
-            setErrors(err);
-        }
-        if (password !== confirmPassword) {
-            const err = ['Passwords Don\'t Match'];
-           setErrors(err);
-            return;
-        }
-        try {
-            const { user } = await auth.createUserWithEmailAndPassword(email, password);
-            await handleUserProfile(user, { displayName });
-            reset();
-            props.history.push('/');
-
-        } catch (error) {
-            console.log(error);
-        }
     }
     
         

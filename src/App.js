@@ -45,7 +45,7 @@ const App = props => {
     return () => {
       authListener();
     };
-  }, []);
+  }, [setCurrentUser]);
 
   return (
     <div className="App">
