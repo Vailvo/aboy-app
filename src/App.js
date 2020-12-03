@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Route } from 'react-router-dom';
 import { auth, handleUserProfile } from './firebase/utils';
 import { setCurrentUser } from './redux/User/user.actions';
 
@@ -24,80 +24,63 @@ import Dashboard from './pages/Dashboard';
 
 
 const App = props => {
-  const { setCurrentUser, currentUser } = props;
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const authListener = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef.onSnapshot(snapshot => {
-          setCurrentUser({
+          dispatch(setCurrentUser({
             id: snapshot.id,
             ...snapshot.data()
 
-          });
+          }));
         })
       }
 
-      setCurrentUser(userAuth);
+      dispatch(setCurrentUser(userAuth));
     });
 
     return () => {
       authListener();
     };
-  }, [setCurrentUser]);
+  }, []);
 
   return (
     <div className="App">
-      <Route exact path="/" render={() => (
-        <MainLayout>
-          <Homepage />
-        </MainLayout>
-      )} />
-      <Route exact path="/Registration" render={() => currentUser ? <Redirect to="/" /> : (
-        <MainLayout>
-          <Registration />
-        </MainLayout>
-      )} />
-      <Route exact path="/Login" render={() => currentUser ? <Redirect to="/" /> : (
+      
+        <Route exact path="/" render={() => (
+          <MainLayout>
+            <Homepage />
+          </MainLayout>
+        )} />
+        <Route exact path="/Registration" render={() => (
+          <MainLayout>
+            <Registration />
+          </MainLayout>
+        )} />
+        <Route exact path="/Login" render={() => (
           <MainLayout>
             <Login />
           </MainLayout>
         )} />
-      <Route exact path="/Recovery" render={() => (
+        <Route exact path="/Recovery" render={() => (
           <MainLayout>
             <Recovery />
           </MainLayout>
         )} />
-      <Route exact path="/Dashboard" render={() => (
-        <WithAuth>
-          <MainLayout>
-            <Dashboard />
-          </MainLayout>
-        </WithAuth>
-      )} />
-
+        <Route exact path="/Dashboard" render={() => (
+          <WithAuth>
+            <MainLayout>
+              <Dashboard />
+            </MainLayout>
+          </WithAuth>
+        )} />
+      
     </div>
   )
 }
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
-});
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

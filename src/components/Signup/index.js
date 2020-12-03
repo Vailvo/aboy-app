@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { signUpUser } from './../../redux/User/user.actions';
+import { signUpUser, resetAllAuthForms } from './../../redux/User/user.actions';
 
 import './styles.scss'
 import FormInput from '../forms/FormInput';
@@ -27,6 +27,7 @@ const Signup = props => {
     useEffect(() => {
         if (signUpSuccess) {
             reset();
+            dispatch(resetAllAuthForms());
             props.history.push('/');
         }
     }, [signUpSuccess]);
@@ -35,7 +36,7 @@ const Signup = props => {
         if (Array.isArray(signUpError) && signUpError.length > 0) {
             setErrors(signUpError)
         }
-    })
+    }, [signUpError])
     const reset = () => {
         setDisplayName('');
         setEmail('');
