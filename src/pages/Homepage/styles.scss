@@ -57,8 +57,9 @@
 
         .clmn {
             display: inline-block;
-            border: 2px solid black;
-            border-radius: 5px;
+            // border: 2px solid black;
+            // border-radius: 5px;
+            font-style: bold;
             padding: 5px;
             margin-left: 15px;
             font-family: 'Courier New', Courier, monospace;
@@ -66,7 +67,7 @@
 
         .clmn:hover {
             color: green;
-            background-color:black;
+            font-style: italic;
             cursor: pointer;
         }
     }
