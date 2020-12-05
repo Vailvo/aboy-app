@@ -1,12 +1,12 @@
 import { takeLatest, call, all, put } from 'redux-saga/effects';
 import { auth, handleUserProfile,getCurrentUser, GoogleProvider } from './../../firebase/utils';
 import userTypes from './user.types';
-import { signInSuccess, signOutUserSuccess, userError } from './user.actions';
+import { signInSuccess, signOutUserSuccess, resetPasswordSuccess, userError } from './user.actions';
 
-export function* getSnapshotFromUserAuth(user) {
+export function* getSnapshotFromUserAuth(user, additionalData={}) {
     try {
 
-        const userRef = yield call(handleUserProfile, { userAuth: user });
+        const userRef = yield call(handleUserProfile, { userAuth: user, additionalData });
         const snapshot = yield userRef.get();
         yield put(
             signInSuccess({
@@ -78,18 +78,20 @@ export function* signUpUser({ payload: {
         yield put(
             userError(err)
         )
-       
+       return
     }
     if (password !== confirmPassword) {
         const err = ['Passwords Don\'t Match'];
         yield put(
             userError(err)
         )
-        
+        return
     }
     try {
         const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-        yield call(handleUserProfile, {userAuth: user, additionalData: {displayName}});
+        const additionalData = { displayName };
+        yield getSnapshotFromUserAuth(user, additionalData);
+        
         
         
 
@@ -99,7 +101,15 @@ export function* signUpUser({ payload: {
 }
 
 export function* onSignUpUserStart() {
-    takeLatest(userTypes.SIGN_UP_USER_START, signUpUser);
+  yield takeLatest(userTypes.SIGN_UP_USER_START, signUpUser);
+}
+
+export function* resetPassword({ payload: { email }}) {
+
+}
+
+export function* onResetPasswordStart() {
+    yield takeLatest(userTypes.RESET_PASSWORD_START, resetPassword);
 }
 
 export default function* userSagas() {
@@ -107,6 +117,7 @@ export default function* userSagas() {
         call(onEmailSignInStart), 
         call(onCheckUserSession), 
         call(onSignOutUserStart),
-        call(onSignUpUserStart)
+        call(onSignUpUserStart),
+        call(onResetPasswordStart)
     ])
 }

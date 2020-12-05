@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { signUpUser, resetAllAuthForms } from './../../redux/User/user.actions';
+import { signUpUserStart } from './../../redux/User/user.actions';
 
 import './styles.scss'
 import FormInput from '../forms/FormInput';
@@ -12,11 +12,11 @@ import AuthWrapper from '../AuthWrapper';
 
 
 const mapState = ({ user }) => ({
-    signUpSuccess: user.signUpSuccess,
-    signUpError: user.signUpError
+    currentUser: user.currentUser,
+    userErr: user.userErr
 })
 const Signup = props => {
-    const { signUpSuccess, signUpError } = useSelector(mapState);
+    const { currentUser, userErr } = useSelector(mapState);
     const dispatch = useDispatch();
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
@@ -25,18 +25,17 @@ const Signup = props => {
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
-        if (signUpSuccess) {
+        if (currentUser) {
             reset();
-            dispatch(resetAllAuthForms());
             props.history.push('/');
         }
-    }, [signUpSuccess]);
+    }, [currentUser]);
 
     useEffect(() => {
-        if (Array.isArray(signUpError) && signUpError.length > 0) {
-            setErrors(signUpError)
+        if (Array.isArray(userErr) && userErr.length > 0) {
+            setErrors(userErr)
         }
-    }, [signUpError])
+    }, [userErr])
     const reset = () => {
         setDisplayName('');
         setEmail('');
@@ -46,10 +45,39 @@ const Signup = props => {
 
     }
     
+    // var strength = {
+    //     0: "Worst ☹",
+    //     1: "Bad ☹",
+    //     2: "Weak ☹",
+    //     3: "Good ☺",
+    //     4: "Strong ☻"
+    // }
+    
+    // var passWord = document.getElementById('password');
+    // var meter = document.getElementById('password-strength-meter');
+    // var text = document.getElementById('password-strength-text');
+    
+    // password.addEventListener('input', function()
+    // {
+    //     var val = passWord.value;
+    //     var result = zxcvbn(val);
+      
+    //     // Update the password strength meter
+    //     meter.value = result.score;
+       
+    //     // Update the text indicator
+    //     if(val !== "") {
+    //         text.innerHTML = "Strength: " && "<strong>" + strength[result.score] + "</strong>" && 
+    //         "<span class='feedback'>" + result.feedback.warning + " " + result.feedback.suggestions + "</span"; 
+    //     }
+    //     else {
+    //         text.innerHTML = "";
+    //     }
+    // });
 
   const handleFormSubmit = async event => {
         event.preventDefault();
-        dispatch(signUpUser({
+        dispatch(signUpUserStart({
             displayName,
             email,
             password,
@@ -97,10 +125,14 @@ const Signup = props => {
                         <FormInput
                             type="password"
                             name="password"
+                            id="password"
                             value={password}
                             placeholder="Password"
                             handleChange={e => setPassword(e.target.value)}
+                            required
                         />
+                        <meter max="4" id="password-strength-meter"></meter>
+                        <p id="password-strength-text"></p>
 
                         <FormInput
                             type="password"
