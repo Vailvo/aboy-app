@@ -2,13 +2,14 @@
     text-transform: uppercase;
     text-align: center;
     max-width: 1450px;
+    max-height: 268px;
     padding: 20px 10px;
     margin: .5rem auto 0;
 
     .address {
         font-size: 16px;
-        font-family: 'Courier New', Courier, monospace;
-        float: left;
+        font-family: 'Times New Roman', Times, serif;
+        float: flex-start;
         // background-color: rgb(231, 243, 240);
 
         .column {
@@ -19,28 +20,37 @@
         }
     }
 
+        .socialMedia {
+            display: inline-block;
+            max-width: 235px;
+            
+            subtitle,
+            h5 {
+                display: inline-block;
+            }
+        }
     .storeHours,
     .contactUs {
-        float: right;
+        float: flex-end;
         margin-left: 10px;
         padding: 10px;
         font-size: 16px;
-        font-family: 'Courier New', Courier, monospace;
-
+        font-family: 'Times New Roman', Times, serif;
+        max-width: 235px;
         .sub {
             font-size: 15px;
+            max-width: 235px;
         }
     }
 
 
-    .contactUs {
-        margin-left: 300px;
-    }
+   
 
     .aboy {
+        width: 1450px;
         display: block;
-        background-color: rgb(161, 95, 95);
-        font-family: 'Courier New', Courier, monospace;
+        background-color: lightcyan;
+        font-family: 'Times New Roman', Times, serif;
         padding: 25px;
     }
 }

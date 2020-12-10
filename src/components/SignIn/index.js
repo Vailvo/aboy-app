@@ -33,9 +33,9 @@ const SignIn = props => {
     }
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch(emailSignInStart({email, password}))
-        
-        
+        dispatch(emailSignInStart({ email, password }))
+
+
     }
 
     const handleGoogleSignIn = () => {
@@ -74,16 +74,20 @@ const SignIn = props => {
                             <Button onClick={handleGoogleSignIn}>
                                 Sign in with Google
                                 </Button>
-                            <Link to="/Registration">
-                                Don't have an account?
-                            </Link>
+
                         </div>
                     </div>
                     <div className="links">
+
                         <Link to="/Recovery">
                             Reset Password
-                            </Link>
+                        </Link>
 
+                    </div>
+                    <div className="links2">
+                        <Link to="/Registration">
+                            Don't have an account?
+                        </Link>
                     </div>
                 </form>
             </div>

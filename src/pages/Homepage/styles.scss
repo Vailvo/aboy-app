@@ -8,36 +8,13 @@
     margin: auto;
     max-width: 1450px;
 
-    .column {
-        float: left;
-        width: 22.55%;
-        padding: 5px;
-        margin-left: 10px;
-        margin-bottom: 10px;
         
-        .hardware,
-        .plumbing,
-        .paint,
-        .lumber {
-            border-radius: 15px;
            
-        }
+        
+        
     
-    }
-
-    .row::after{
-        content: "";
-        clear: both;
-        display: table;
-    }
-
-   h1 {
-       font-family: 'Courier New', Courier, monospace;
-   }
-    h1:hover {
-        color: green;
-        cursor: pointer;
-    }
+  
+    
 
     
     .services {
@@ -62,7 +39,7 @@
             font-style: bold;
             padding: 5px;
             margin-left: 15px;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Courier New', Courier, monospace; 
         }
 
         .clmn:hover {
@@ -71,4 +48,5 @@
             cursor: pointer;
         }
     }
+
 }

@@ -5,11 +5,9 @@ const Footer = props => {
     return (
         <footer className="footer">
 
-            <div className="address">
-                {/* <h4 className="title">
-                    Addresses
-                </h4> */}
-                <div className="column">
+            
+              
+                {/* <div className="column">
                     <h5>
                         Portland Location:
                 </h5>
@@ -32,7 +30,7 @@ const Footer = props => {
                     <p>
                         Portland, OR 97232
                     </p>
-            </div>
+           
             <div className="storeHours">
                 <h5>
                     Store Hours:
@@ -44,7 +42,12 @@ const Footer = props => {
                     Closed on Holidays
                 </p>
             </div>
-
+                <div className="socialMedia">
+                <subtitle>Follow Us on:</subtitle>
+                    <h5>Facebook</h5>
+                            &
+                    <h5>Twitter</h5>
+                </div>
             <div className="contactUs">
                 <h5>
                     Contact Us:
@@ -55,13 +58,13 @@ const Footer = props => {
                 <p className="sub">
                     Email Us: sales@aboysupply.com
                 </p>
-            </div>
+            </div> */}
 
 
                 <div className="aboy">
                     ABOYSUPPLY.COM &copy; 2020 by Shazé Williams
                 </div>
-        </div>
+        {/* </div> */}
 
 
         </footer>
