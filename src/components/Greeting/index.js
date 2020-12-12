@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.scss';
 
 class Greeting extends React.Component {
     state = {
@@ -22,7 +23,7 @@ class Greeting extends React.Component {
          const {hour} = this.state;
          return (
            <div className='App'>
-             <li>{hour < 12 ? `Good Morning, ` : `Good evening, `}</li>
+             <div>{hour < 12 ? `Good Morning, ` :  `Good evening, `}</div>
            </div>
          );
        }

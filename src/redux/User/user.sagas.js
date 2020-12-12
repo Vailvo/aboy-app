@@ -88,10 +88,7 @@ export function* signUpUser({ payload: {
         const additionalData = { displayName };
         yield getSnapshotFromUserAuth(user, additionalData);
         
-        
-        
-
-    } catch (error) {
+        } catch (error) {
         // console.log(error);
     }
 }
@@ -115,10 +112,6 @@ export function* resetPassword({ payload: { email }}) {
     }
 
 }
-
-
-
-
 
 export function* onResetPasswordStart() {
     yield takeLatest(userTypes.RESET_PASSWORD_START, resetPassword);

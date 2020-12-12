@@ -5,7 +5,7 @@ import './styles.scss';
 import Greeting from '../Greeting';
 import { Link } from 'react-router-dom';
 import Logo from './../../logo/logo_green.png';
-import Magfi from './../../images/magfi.png';
+
 
 
 
@@ -63,12 +63,12 @@ const Header = props => {
                 </div>
 
                 <div className="navbar">
-                    <div className="search">
-                        <input type="search" placeholder="Search..." ></input>
-                        {/* <img src={Magfi} alt="Search" className="magfi" /> */}
-                    </div>
+                    {/* <div className="search">
+                        <input type="search" placeholder="Search..."> </input>
+                        
+                    </div> */}
                     <div className="cart">
-                        Cart   <span class="glyphicon">&#xe116;</span>
+                        Cart   <div class="glyphicon">&#xe116;</div>
                     </div>
                     <div className="stores">
                         <div className="dropdown">
@@ -78,38 +78,38 @@ const Header = props => {
                                 <p>7365 SW Barbur Blvd,</p>
                                 <p>Porland, OR 97219</p>
                                 <p>(503)245-0714</p>
+                                <p>Store Hours: </p>
+                                <p> 8.A.M. - 6.P.M. Daily</p>
                                 <a href="/">Change Store</a>
                                 <a href="/">Details</a>
-                                <hr/>
+                                <hr />
                                 <h4> Locate a Store</h4>
                                 <input type="number" placeholder="Enter Zipcode">
 
                                 </input>
                                 <a href="/">View All Stores</a>
-                               
+
                             </div>
                         </div>
                     </div>
-                    {/* <div className="contactUs">
-                        Contact Us: (503)245-0714 
-                    </div> */}
+
                     {currentUser && (
-                        <ul>
-                            <li className="greeting">
+                        <>
+                            <div className="greeting">
                                 <Greeting /> {currentUser.displayName}
-                            </li>
-                            <li>
+                            </div>
+                            <div className="dashBtn">
                                 <Link to="/Dashboard">
                                     My Account
                                 </Link>
-                            </li>
-                            <li>
+                            </div>
+                            
                                 <span onClick={() => signOut()}>
                                     LogOut
                                 </span>
-                            </li>
-
-                        </ul>
+                            
+                        </>
+                        
                     )}
                     {!currentUser && (
 

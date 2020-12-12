@@ -10,7 +10,49 @@
 
         
            
-        
+      .topCatTable {
+          padding: 10px;
+          width: 100%;
+          text-align: center;
+          margin: auto;
+          tr {
+              
+            th {
+                text-align: center;
+            }
+              td {
+                //   border: 2px dashed black;
+                  display: inline-block;
+                  max-width: 100%;
+                  padding: 15px;
+                
+                  a {
+                      text-decoration: none;
+                    padding: 10px;
+                  }
+                  a:hover {
+                    
+                    color: green;
+                  }
+                  h4 {
+                    text-align: center;
+                  }
+                  h4:hover {
+                      
+                      font-style: bold;
+                      
+                  }
+                 
+
+                  img {
+                      max-height: 100px;
+                      max-width: 150px;
+                      display: inline-block;
+                      
+                  }
+              }
+          }
+      }  
         
     
   

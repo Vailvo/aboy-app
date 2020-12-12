@@ -48,12 +48,9 @@ export const resetUserState = () => ({
     type: userTypes.RESET_USER_STATE
 });
 
-export const googleSignInStart = () => ({
+export const googleSignInStart = () => ({ 
     type: userTypes.GOOGLE_SIGN_IN_START
 })
-
-
-
 
 export const setCurrentUser = user => ({
     type: userTypes.SET_CURRENT_USER,
@@ -63,36 +60,4 @@ export const setCurrentUser = user => ({
 export const resetAllAuthForms = () => ({ 
     type: userTypes.RESET_AUTH_FORMS
 })
-
-
-
-
-// export const resetPassword = ({ email }) => async dispatch => {
-//     const config = {
-//         url: 'http://localhost:3000/Login'
-//     } 
-    
-//     try {
-
-            
-//             await auth.sendPasswordResetEmail( email, config )
-//             .then(() => {
-//                 dispatch({
-//                     type: userTypes.RESET_PASSWORD_SUCCESS,
-//                     payload: true
-//                 });
-               
-//             })
-//             .catch(() => {
-//                 const err = ['Email not found. Please try again.'];
-//                 dispatch({
-//                     type: userTypes.RESET_PASSWORD_ERROR,
-//                     payload: err
-//                 })
-                
-//             })
-//         } catch (error) {
-//             console.log(error);
-//         }
-// };
 

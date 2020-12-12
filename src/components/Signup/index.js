@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { signUpUserStart } from './../../redux/User/user.actions';
 
 import './styles.scss'
@@ -18,6 +19,7 @@ const mapState = ({ user }) => ({
 const Signup = props => {
     const { currentUser, userErr } = useSelector(mapState);
     const dispatch = useDispatch();
+    const history = useHistory();
     const [displayName, setDisplayName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -27,13 +29,13 @@ const Signup = props => {
     useEffect(() => {
         if (currentUser) {
             reset();
-            props.history.push('/');
+            history.push('/');
         }
-    }, [currentUser]);
+    }, [currentUser, history]);
 
     useEffect(() => {
         if (Array.isArray(userErr) && userErr.length > 0) {
-            setErrors(userErr)
+            setErrors(userErr);
         }
     }, [userErr])
     const reset = () => {
