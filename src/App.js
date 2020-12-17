@@ -13,17 +13,24 @@ import WithAdminAuth from './hoc/withAdminAuth';
 
 // layouts
 import MainLayout from './layouts/MainLayout';
+import AdminLayout from './layouts/AdminLayout';
+import DashboardLayout from './layouts/DashboardLayout';
 // scss
 import './default.scss';
 
 // pages
 import Homepage from './pages/Homepage';
-import Registration from './pages/Registration';
+import Search from './pages/Search';
+import Registration from './pages/Registration'; 
 import Login from './pages/Login';
 import Recovery from './pages/Recovery';
 import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
-
+import ProductDetails from './pages/ProductDetails';
+import Cart from './pages/Cart';
+import Payment from './pages/Payment';
+import Order from './pages/Order';
+import './default.scss';
 
 
 
@@ -43,6 +50,11 @@ const App = props => {
       <Route exact path="/" render={() => (
         <MainLayout>
           <Homepage />
+        </MainLayout>
+      )} />
+      <Route exact path="/Search" render={(
+        <MainLayout>
+          <Search/>
         </MainLayout>
       )} />
       <Route exact path="/Registration" render={() => (

@@ -15,7 +15,7 @@ const useAdminAuth = props => {
         if(!checkUserIsAdmin(currentUser)){
             history.push('/Login')
         }
-    }, [ currentUser]);
+    }, [ currentUser ]);
 
     return currentUser;
 }
