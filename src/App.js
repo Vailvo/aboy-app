@@ -57,6 +57,28 @@ const App = props => {
           <Search/>
         </MainLayout>
       )} />
+      <Route path="/Search/:filterType" render={() => (
+          <MainLayout>
+            <Search />
+          </MainLayout>
+        )} />
+        <Route path="/Product/:productID" render={() => (
+          <MainLayout>
+            <ProductDetails />
+          </MainLayout>
+        )} />
+        <Route path="/Cart" render={() => (
+          <MainLayout>
+            <Cart />
+          </MainLayout>
+        )} />
+        <Route path="/Payment" render={() => (
+          <WithAuth>
+            <MainLayout>
+              <Payment />
+            </MainLayout>
+          </WithAuth>
+        )} />
       <Route exact path="/Registration" render={() => (
         <MainLayout>
           <Registration />
@@ -79,11 +101,18 @@ const App = props => {
           </MainLayout>
         </WithAuth>
       )} />
+      <Route path="/Order/:orderID" render={() => (
+          <WithAuth>
+            <DashboardLayout>
+              <Order />
+            </DashboardLayout>
+          </WithAuth> 
+        )} />
       <Route exact path="/Admin" render={() => (
         <WithAdminAuth>
-          <MainLayout>
+          <AdminLayout>
             <Admin />
-          </MainLayout>
+          </AdminLayout>
         </WithAdminAuth>
       )} />
 

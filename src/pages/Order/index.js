@@ -20,7 +20,7 @@ const Order = () => {
       getOrderDetailsStart(orderID)
     );
 
-  }, []);
+  }, [ dispatch, orderID]);
 
   return (
     <div>

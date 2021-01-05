@@ -10,12 +10,12 @@ import rootSaga from './rootSaga';
 const sagaMiddleware = createSagaMiddle();
 export const middlewares = [thunk, sagaMiddleware, logger];
 
+
 export const store = createStore(rootReducer, applyMiddleware(...middlewares));
 sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);
 
-export default {
-    store,
-    persistor
-};
+//persistor was removed from export and the website is debugged for now
+
+export default store;

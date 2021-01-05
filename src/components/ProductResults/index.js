@@ -27,7 +27,7 @@ const ProductResults = ({ }) => {
 
   const handleFilter = (e) => {
     const nextFilter = e.target.value;
-    history.push(`/search/${nextFilter}`);
+    history.push(`/Search/${nextFilter}`);
   };
 
   if (!Array.isArray(data)) return null;
@@ -47,12 +47,30 @@ const ProductResults = ({ }) => {
       name: 'Show all',
       value: ''
     }, {
-      name: 'Mens',
-      value: 'mens'
+      name: 'Hardware',
+      value: 'Hardware'
     }, {
-      name: 'Womens',
-      value: 'womens'
-    }],
+      name: 'Plumbing',
+      value: 'Plumbing'
+    },
+    {
+      name: 'Showroom',
+      value: 'Showroom'
+    },
+    {
+      name: 'Lumber',
+      value: 'Lumber'
+    },
+    {
+      name: 'Paint',
+      value: 'Paint'
+    },
+    {
+      name: 'Garden',
+      value: 'Garden'
+    }
+    
+  ],
     handleChange: handleFilter
   };
 

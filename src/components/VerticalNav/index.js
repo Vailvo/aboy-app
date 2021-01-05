@@ -13,8 +13,8 @@ const VerticalNav = ({ children }) => {
   const configUserProfile = {
     currentUser
   }
-
-  return (
+ 
+  return ( 
     <div className="verticalNav">
 
       <UserProfile {...configUserProfile} />

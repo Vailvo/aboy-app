@@ -17,8 +17,8 @@ const AdminLayout = props => {
   return (
     <div className="adminLayout">
       <Header {...props} />
-      <div className="controlPanel">
-        <div className="sidebar">
+      <div className="controlPanel"> 
+        <div className="sidebar"> 
           <VerticalNav>
             <ul>
               <li>

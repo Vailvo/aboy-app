@@ -26,5 +26,7 @@
       height: auto;
       min-height: 40.0rem;
       pointer-events: all;
+      max-height: 95vh;
+      overflow: auto;
     }
   }

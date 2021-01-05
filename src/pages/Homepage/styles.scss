@@ -8,7 +8,53 @@
     margin: auto;
     max-width: 1450px;
 
-        
+    .frame {
+      border: black  solid 2px;
+      max-width: 10225px;
+      margin: auto;
+      height: 400px;
+      padding: 20px;
+    } 
+    
+    .recentlyViewed,
+    .justForYou {
+      // border: black dashed 2px;
+      max-width: 10225px;
+      height: 350px;
+      display: inline-block;
+      margin: auto;
+      // padding: 20px;
+      margin-left: 25px;
+      margin-top: 25px;
+
+      .viewed,
+      .forYou {
+        // border: 2px dashed black;
+        height: 208px;
+        display: block;
+
+        th {
+          // border: 2px dashed black;
+          height: 50px;
+          
+          width: 175px;
+        }
+
+        td {
+          // border: 2px dashed black;
+          height: 100px;
+          padding: 5px;
+          width: 175px;
+          
+          
+        }
+
+        td:hover {
+          color:green;
+          cursor: pointer;
+        }
+      }
+    }
            
       .topCatTable {
           padding: 10px;
@@ -61,9 +107,10 @@
     
     .services {
         margin: auto;
-        padding: 10px;
+        margin-bottom: 50px;
+        padding: 20px;
         
-        width: 925px;
+        width: 100%;
         vertical-align: middle;
         
         
@@ -71,22 +118,23 @@
         .title {
             // border: 2px solid red;
             padding: 10px;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Times New Roman', Times, serif;
+            font-style: bolder;
         }
 
         .clmn {
             display: inline-block;
-            // border: 2px solid black;
+            border: .5px solid black;
             // border-radius: 5px;
             font-style: bold;
-            padding: 5px;
+            padding: 12px;
             margin-left: 15px;
-            font-family: 'Courier New', Courier, monospace; 
+            font-family: 'Times New Roman', Times, serif; 
         }
 
         .clmn:hover {
             color: green;
-            font-style: italic;
+            
             cursor: pointer;
         }
     }

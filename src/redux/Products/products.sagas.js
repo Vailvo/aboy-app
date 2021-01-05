@@ -30,7 +30,7 @@ export function* onAddProductStart() {
   
   export function* fetchProducts({ payload }) {
     try {
-      const products = yield handleFetchProducts(payload);
+      const products = yield handleFetchProducts({ payload });
       yield put(
         setProducts(products)
       );
@@ -79,7 +79,7 @@ export function* onAddProductStart() {
   export default function* productsSagas() {
     yield all([
       call(onAddProductStart),
-      call(onFetchProductsStart),
+      call(onFetchProductsStart), 
       call(onDeleteProductStart),
       call(onFetchProductStart),
     ])

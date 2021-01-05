@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProductStart, fetchProductsStart, deleteProductStart } from './../../redux/Products/products.actions';
+import { addProductStart, fetchProductsStart, deleteProductStart, editProductStart } from './../../redux/Products/products.actions';
 import Modal from './../../components/Modal';
 import FormInput from './../../components/forms/FormInput';
 import FormSelect from './../../components/forms/FormSelect';
 import Button from './../../components/forms/Button';
 import LoadMore from './../../components/LoadMore';
 import CKEditor from 'ckeditor4-react';
+
 import './styles.scss';
 
 const mapState = ({ productsData }) => ({
@@ -17,7 +18,7 @@ const Admin = props => {
   const { products } = useSelector(mapState);
   const dispatch = useDispatch();
   const [hideModal, setHideModal] = useState(true);
-  const [productCategory, setProductCategory] = useState('mens');
+  const [productCategory, setProductCategory] = useState('Hardware');
   const [productName, setProductName] = useState('');
   const [productThumbnail, setProductThumbnail] = useState('');
   const [productPrice, setProductPrice] = useState(0);
@@ -29,7 +30,7 @@ const Admin = props => {
     dispatch(
       fetchProductsStart()
     );
-  }, []);
+  }, [dispatch]);
 
   const toggleModal = () => setHideModal(!hideModal);
 
@@ -40,7 +41,7 @@ const Admin = props => {
 
   const resetForm = () => {
     setHideModal(true);
-    setProductCategory('mens');
+    setProductCategory('');
     setProductName('');
     setProductThumbnail('');
     setProductPrice(0);
@@ -57,6 +58,13 @@ const Admin = props => {
         productThumbnail,
         productPrice,
         productDesc,
+      }),
+      editProductStart({
+        productCategory,
+        productName,
+        productThumbnail,
+        productPrice,
+        productDesc
       })
     );
     resetForm();
@@ -100,29 +108,28 @@ const Admin = props => {
             <FormSelect
               label="Category"
               options={[{
-                value: "Hardware",
+                value: "hardware",
                 name: "Hardware"
               }, {
-                value: "Plumbing",
+                value: "plumbing",
                 name: "Plumbing"
               },
               {
-                value: "Paint",
+                value: "paint",
                 name: "Paint"
               },
               {
-                value: "Lumber",
+                value: "lumber",
                 name: "Lumber"
               },
               {
                 value: "Garden",
-                name: "Garden"
+                name: "garden"
               },
               {
                 value: "Showroom",
-                name: "Showroom"
-              },
-            ]}
+                name: "showroom"
+              }]}
               handleChange={e => setProductCategory(e.target.value)}
             />
 
@@ -136,7 +143,7 @@ const Admin = props => {
             <FormInput
               label="Main image URL"
               type="url"
-              value={null}
+              value={productThumbnail}
               handleChange={e => setProductThumbnail(e.target.value)}
             />
 
@@ -190,7 +197,7 @@ const Admin = props => {
                       return (
                         <tr key={index}>
                           <td>
-                            <img className="thumb" src={null} />
+                            <img className="thumb" src={productThumbnail} alt="" />
                           </td>
                           <td>
                             {productName}
@@ -199,9 +206,9 @@ const Admin = props => {
                             ${productPrice}
                           </td>
                           <td>
-                              <Button>
-                                  Edit
-                              </Button>
+                            <Button onClick={() => dispatch()}>
+                              Edit
+                            </Button>
                           </td>
                           <td>
                             <Button onClick={() => dispatch(deleteProductStart(documentID))}>

@@ -17,7 +17,7 @@ const UserProfile = props => {
         <li>
           <span className="displayName">
             {displayName && displayName}
-          </span>
+          </span> 
         </li>
       </ul>
     </div>

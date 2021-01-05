@@ -34,7 +34,7 @@ const ProductCard = ({}) => {
       )
     }
 
-  }, []);
+  }, [ dispatch, productID]);
 
   const handleAddToCart = (product) => {
     if (!product) return;
@@ -51,7 +51,7 @@ const ProductCard = ({}) => {
   return (
     <div className="productCard">
       <div className="hero">
-        {/* <img src={} /> */}
+        <img src={productThumbnail} alt="" />
       </div>
       <div className="productDetails">
         <ul>

@@ -10,7 +10,7 @@ const Modal = ({ hideModal, toggleModal, children }) => {
       <div className="modal">
         {children}
       </div>
-    </div>
+    </div> 
   ];
 }
 
