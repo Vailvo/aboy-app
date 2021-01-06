@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProductStart, fetchProductsStart, deleteProductStart, editProductStart } from './../../redux/Products/products.actions';
-import Modal from './../../components/Modal';
+// import Modal from './../../components/Modal';
 import FormInput from './../../components/forms/FormInput';
 import FormSelect from './../../components/forms/FormSelect';
 import Button from './../../components/forms/Button';
@@ -17,7 +17,7 @@ const mapState = ({ productsData }) => ({
 const Admin = props => {
   const { products } = useSelector(mapState);
   const dispatch = useDispatch();
-  const [hideModal, setHideModal] = useState(true);
+  // const [hideModal, setHideModal] = useState(true);
   const [productCategory, setProductCategory] = useState('Hardware');
   const [productName, setProductName] = useState('');
   const [productThumbnail, setProductThumbnail] = useState('');
@@ -32,16 +32,16 @@ const Admin = props => {
     );
   }, [dispatch]);
 
-  const toggleModal = () => setHideModal(!hideModal);
+  // const toggleModal = () => setHideModal(!hideModal);
 
-  const configModal = {
-    hideModal,
-    toggleModal
-  };
+  // const configModal = {
+  //   hideModal,
+  //   toggleModal
+  // };
 
   const resetForm = () => {
-    setHideModal(true);
-    setProductCategory('');
+    // setHideModal(true);
+    setProductCategory('hardware');
     setProductName('');
     setProductThumbnail('');
     setProductPrice(0);
@@ -87,7 +87,7 @@ const Admin = props => {
   return (
     <div className="admin">
 
-      <div className="callToActions">
+      {/* <div className="callToActions">
         <ul>
           <li>
             <Button onClick={() => toggleModal()}>
@@ -95,82 +95,7 @@ const Admin = props => {
             </Button>
           </li>
         </ul>
-      </div>
-
-      <Modal {...configModal}>
-        <div className="addNewProductForm">
-          <form onSubmit={handleSubmit}>
-
-            <h2>
-              Add new product
-            </h2>
-
-            <FormSelect
-              label="Category"
-              options={[{
-                value: "hardware",
-                name: "Hardware"
-              }, {
-                value: "plumbing",
-                name: "Plumbing"
-              },
-              {
-                value: "paint",
-                name: "Paint"
-              },
-              {
-                value: "lumber",
-                name: "Lumber"
-              },
-              {
-                value: "Garden",
-                name: "garden"
-              },
-              {
-                value: "Showroom",
-                name: "showroom"
-              }]}
-              handleChange={e => setProductCategory(e.target.value)}
-            />
-
-            <FormInput
-              label="Name"
-              type="text"
-              value={productName}
-              handleChange={e => setProductName(e.target.value)}
-            />
-
-            <FormInput
-              label="Main image URL"
-              type="url"
-              value={productThumbnail}
-              handleChange={e => setProductThumbnail(e.target.value)}
-            />
-
-            <FormInput
-              label="Price"
-              type="number"
-              min="0.00"
-              max="10000.00"
-              step="0.01"
-              value={productPrice}
-              handleChange={e => setProductPrice(e.target.value)}
-            />
-
-            <CKEditor
-              onChange={evt => setProductDesc(evt.editor.getData())}
-            />
-
-            <br />
-
-            <Button type="submit">
-              Add product
-            </Button>
-
-          </form>
-        </div>
-      </Modal>
-
+      </div> */}
       <div className="manageProducts">
 
         <table border="0" cellPadding="0" cellSpacing="0">
@@ -206,14 +131,14 @@ const Admin = props => {
                             ${productPrice}
                           </td>
                           <td>
-                            <Button onClick={() => dispatch()}>
+                            <Button onClick={() => dispatch(editProductStart(documentID))}>
                               Edit
-                            </Button>
+                    </Button>
                           </td>
                           <td>
                             <Button onClick={() => dispatch(deleteProductStart(documentID))}>
                               Delete
-                            </Button>
+                    </Button>
                           </td>
                         </tr>
                       )
@@ -246,6 +171,101 @@ const Admin = props => {
         </table>
 
       </div>
+
+      <div className="addNewProductForm">
+        <form onSubmit={handleSubmit}>
+
+          <h2>
+            Add new product
+          </h2>
+
+          <FormSelect
+            label="Category"
+            options={[{
+              value: "hardware",
+              name: "Hardware"
+            }, {
+              value: "plumbing",
+              name: "Plumbing"
+            },
+            {
+              value: "paint",
+              name: "Paint"
+            },
+            {
+              value: "lumber",
+              name: "Lumber"
+            },
+            {
+              value: "garden",
+              name: "Garden"
+            },
+            {
+              value: "showroom",
+              name: "Showroom"
+            }
+          ]}
+            // down below is supposed be a submenu for the showroom
+              // options={[{
+              //     value: "lighting",
+              //     name: "Lighting"
+              //   },
+              //   {
+              //     value: "tubs",
+              //     name: "Tubs"
+              //   },
+              //   {
+              //     value: "sinks",
+              //     name: "Sinks"
+              //   },
+              //   {
+              //     value: "faucets",
+              //     name: "Faucets"
+              //   }]}
+            
+            
+            handleChange={e => setProductCategory(e.target.value)}
+          />
+
+          <FormInput
+            label="Name"
+            type="text"
+            value={productName}
+            handleChange={e => setProductName(e.target.value)}
+          />
+
+          <FormInput
+            label="Main Image URL"
+            type="url"
+            value={productThumbnail}
+            handleChange={e => setProductThumbnail(e.target.value)}
+          />
+
+          <FormInput
+            label="Price"
+            type="number"
+            min="0.00"
+            max="10000.00"
+            step="0.01"
+            value={productPrice}
+            handleChange={e => setProductPrice(e.target.value)}
+          />
+
+          <CKEditor
+            onChange={evt => setProductDesc(evt.editor.getData())}
+          />
+
+          <br />
+
+          <Button type="submit">
+            Add product
+            </Button>
+
+        </form>
+      </div>
+
+
+
 
     </div>
   );

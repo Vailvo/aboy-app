@@ -1,26 +1,27 @@
 .admin {
     padding: 0 10px;
+    margin: auto;
   
-    .callToActions {
-      display: inline-block;
-      width: 100%;
-      padding: 0;
-      margin: 0 auto;
+  //   .callToActions {
+  //     display: inline-block;
+  //     width: 50%;
+  //     padding: 0;
+  //     margin: 0 auto;
   
-      ul, li {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-      }
+  //     ul, li {
+  //       margin: 0;
+  //       padding: 0;
+  //       list-style-type: none;
+  //     }
   
-      ul {
-        li {
-          display: inline-block;
+  //     ul {
+  //       li {
+  //         display: inline-block;
   
-        }
-      }
+  //       }
+  //     }
   
-    }
+  //   }
   }
   
   .manageProducts {
@@ -44,18 +45,34 @@
       }
     }
   }
+  .addNewProductForm {
+    border: 1px solid black;
+    margin: auto;
+    width: 925px;
+    padding: 45px;
+    vertical-align: top;
+
+    h2{
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
   
-  @media only screen and (max-width: 980px) {
+
+    
     .manageProducts {
       table {
-        width: 100%;
+        border: 2px dashed black;
+        width: 450px;
+        vertical-align: top;
+        display: inline-block;
   
         .results {
-          width: 100%;
+          width: 450px;
   
           tr td {
             display: block;
-            width: 100%;
+            width: 450px;
   
             img {
               display: block;
@@ -65,4 +82,4 @@
         }
       }
     }
-  }
+  
