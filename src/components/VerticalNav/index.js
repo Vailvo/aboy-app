@@ -19,7 +19,7 @@ const VerticalNav = ({ children }) => {
 
       <UserProfile {...configUserProfile} />
 
-      <div className="menu">
+      <div className="menu"> 
         {children}
       </div>
     </div>

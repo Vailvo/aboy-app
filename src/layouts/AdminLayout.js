@@ -19,7 +19,7 @@ const AdminLayout = props => {
       <Header {...props} />
       <div className="controlPanel"> 
         <div className="sidebar"> 
-          <VerticalNav>
+          <VerticalNav> 
             <ul>
               <li>
                 <Link to="/admin">

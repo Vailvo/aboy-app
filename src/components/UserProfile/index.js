@@ -12,7 +12,7 @@ const UserProfile = props => {
         <li>
           <div className="img">
             {/* <img src={} /> */}
-          </div>
+          </div> 
         </li>
         <li>
           <span className="displayName">

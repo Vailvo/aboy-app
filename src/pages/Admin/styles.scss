@@ -2,34 +2,47 @@
     padding: 0 10px;
     margin: auto;
   
-  //   .callToActions {
-  //     display: inline-block;
-  //     width: 50%;
-  //     padding: 0;
-  //     margin: 0 auto;
+    .callToActions {
+      display: inline-block;
+      width: 50%;
+      padding: 0;
+      margin: 0 auto;
   
-  //     ul, li {
-  //       margin: 0;
-  //       padding: 0;
-  //       list-style-type: none;
-  //     }
+      ul, li {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
   
-  //     ul {
-  //       li {
-  //         display: inline-block;
+      ul {
+        li {
+          display: inline-block;
   
-  //       }
-  //     }
+        }
+      }
   
-  //   }
+    }
   }
   
   .manageProducts {
-  
+      // width: 500px;
+      // vertical-align: top;
+      // display: inline-block;
     h1 {
       margin-top: 1.5rem;
     }
-  
+    table {
+      width: 100%;
+
+      .results {
+        width: 100%;
+
+        tr td {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
     table.results {
       tr {
   
@@ -60,26 +73,6 @@
   
 
     
-    .manageProducts {
-      table {
-        border: 2px dashed black;
-        width: 450px;
-        vertical-align: top;
-        display: inline-block;
-  
-        .results {
-          width: 450px;
-  
-          tr td {
-            display: block;
-            width: 450px;
-  
-            img {
-              display: block;
-              width: 100% !important;
-            }
-          }
-        }
-      }
-    }
+   
+    
   

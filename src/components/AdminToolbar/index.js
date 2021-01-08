@@ -17,9 +17,9 @@ const AdminToolbar = props => {
 
     return (
         <div className="adminToolbar">
-            <div className="title">
+            
                 <Link to="/Admin"> Admin Toolbar </Link>
-            </div>
+            
         </div>
     );
 }

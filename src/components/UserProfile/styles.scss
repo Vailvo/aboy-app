@@ -12,17 +12,18 @@
     ul {
       li {
         display: block;
-        width: 150px;
+        width: 100%;
         // border: dashed 2px black;
   
         .displayName {
           // border: dashed 2px black;
           display: block;
-          width: 250px;
-          padding: 15px;
+          width: 100%;
+          
           margin: 1rem auto;
           font-size: 1.8rem;
           line-height: 1;
+          text-align: center;
           text-transform: uppercase;
         }
       }
